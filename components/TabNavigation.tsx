@@ -49,6 +49,8 @@ const TabNavigation: React.FC<TabNavigationProps> = ({ activeTab, onTabChange, c
           }}
         >
           {/* Liquid Link Tail */}
+          {/* We use a pseudo-element logic here by adding a rotated div. 
+              The z-index and positioning ensure it connects visually with the content area below. */}
           <div className={`absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3.5 h-3.5 transform rotate-45 rounded-br-md border-b border-r ${cardTheme} ${borderColor}`}></div>
         </div>
         

@@ -47,26 +47,26 @@
         },
       }
     </script>
-    <style>
-      .no-scrollbar::-webkit-scrollbar {
-          display: none;
-      }
-      .no-scrollbar {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-      }
-      .glass {
-        background: rgba(255, 255, 255, 0.65);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.5);
-      }
-      .glass-card {
-        background: rgba(255, 255, 255, 0.85);
-        backdrop-filter: blur(8px);
-        -webkit-backdrop-filter: blur(8px);
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
-        border: 1px solid rgba(255, 255, 255, 1);
+    <style type="text/tailwindcss">
+      @layer utilities {
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .glass {
+          @apply bg-white/65 backdrop-blur-md border border-white/50;
+        }
+        .glass-card {
+          @apply bg-white/85 backdrop-blur-md shadow-sm border border-white;
+          box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+        }
+        .mask-image-gradient {
+          mask-image: linear-gradient(to bottom, black 95%, transparent 100%);
+          -webkit-mask-image: linear-gradient(to bottom, black 95%, transparent 100%);
+        }
       }
     </style>
   <script type="importmap">

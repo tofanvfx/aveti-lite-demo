@@ -49,9 +49,30 @@ export const MOCK_LESSON_DATA: LessonData = {
 };
 
 export const GET_MOCK_DATA_FOR_TAB = (tab: TabType): LessonData => {
-  // Always return the standard Lesson Plan content for all tabs as requested
-  // We clone it to ensure no mutations affect the base
-  return { ...MOCK_LESSON_DATA };
+  const data = { ...MOCK_LESSON_DATA };
+  
+  // Dynamic title based on tab to give context
+  switch (tab) {
+    case TabType.WORKSHEET:
+      data.chapterTitle = "Worksheet Activities";
+      break;
+    case TabType.TEST:
+      data.chapterTitle = "Chapter Assessment";
+      break;
+    case TabType.LESSON_LOG:
+      data.chapterTitle = "Teacher's Log";
+      break;
+    case TabType.RESOURCES:
+      data.chapterTitle = "Learning Resources";
+      break;
+    case TabType.QA:
+      data.chapterTitle = "Questions & Answers";
+      break;
+    default:
+      data.chapterTitle = "Title of the chapter";
+  }
+  
+  return data;
 };
 
 export const TABS = [
@@ -60,42 +81,43 @@ export const TABS = [
     label: 'Lesson plan', 
     // Gradients for blobs: [blob1, blob2, blob3]
     theme: ['bg-yellow-300', 'bg-orange-300', 'bg-yellow-100'],
-    cardTheme: 'bg-yellow-50/90',
+    // Using solid colors to ensure the liquid link tail merges perfectly without border overlap artifacts
+    cardTheme: 'bg-yellow-50',
     borderColor: 'border-yellow-200'
   },
   { 
     id: TabType.WORKSHEET, 
     label: 'Worksheet', 
     theme: ['bg-pink-300', 'bg-purple-300', 'bg-rose-200'],
-    cardTheme: 'bg-pink-50/90',
+    cardTheme: 'bg-pink-50',
     borderColor: 'border-pink-200'
   },
   { 
     id: TabType.TEST, 
     label: 'Test', 
     theme: ['bg-blue-300', 'bg-cyan-300', 'bg-indigo-200'],
-    cardTheme: 'bg-blue-50/90',
+    cardTheme: 'bg-blue-50',
     borderColor: 'border-blue-200'
   },
   { 
     id: TabType.LESSON_LOG, 
     label: 'Log', 
     theme: ['bg-emerald-300', 'bg-green-300', 'bg-teal-200'],
-    cardTheme: 'bg-emerald-50/90',
+    cardTheme: 'bg-emerald-50',
     borderColor: 'border-emerald-200'
   },
   { 
     id: TabType.RESOURCES, 
     label: 'Resources', 
     theme: ['bg-purple-300', 'bg-violet-300', 'bg-fuchsia-200'],
-    cardTheme: 'bg-purple-50/90',
+    cardTheme: 'bg-purple-50',
     borderColor: 'border-purple-200'
   },
   { 
     id: TabType.QA, 
     label: 'Q&A', 
     theme: ['bg-orange-300', 'bg-amber-300', 'bg-yellow-200'],
-    cardTheme: 'bg-orange-50/90',
+    cardTheme: 'bg-orange-50',
     borderColor: 'border-orange-200'
   },
 ];
